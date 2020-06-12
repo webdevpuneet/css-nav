@@ -1,0 +1,293 @@
+/* Created by Puneet Sharma - webdevpuneet.com */
+/* Created by webdevpuneet.com */
+
+/* wdpMenu */
+.wdpMenu{
+  display: flex;
+  width: 100%;
+  min-width: 100%;
+  background: #eaeaea;
+  position: relative;
+}
+.wdpMenu__brand{
+  margin-right: 100px;
+  margin-left: 20px;
+  display: block;
+}
+
+.wdpMenu ul{
+  list-style-type: none;
+  padding: 0;
+  line-height: 1;
+  margin: 0;
+}
+.wdpMenu ul li{
+  list-style-type: none;
+  padding: 0;
+  line-height: 1;
+}
+.wdpMenu__navList{
+  display: flex;
+}
+.wdpMenu__navList a,
+.wdpMenu__navList a:hover,
+.wdpMenu__navList a:focus,
+.wdpMenu__navList a:active{
+  text-decoration: none;
+  color: #222222;
+}
+.wdpMenu__navList li{
+  position: relative;
+  background: #ffffff;
+  display: block;
+}
+
+.wdpMenu__navList li a{
+  display: block;
+  height: 30px;
+  padding: 5px 20px;
+  white-space: nowrap;
+  border: 1px solid #cecece;
+}
+.wdpMenu__navList ul{
+  position: absolute;
+  top: 0;
+  left: 100%;
+}
+.wdpMenu__navList li:hover > ul,
+.wdpMenu__navList li.active > ul{
+  display: block;
+}
+
+/* List animation */
+@keyframes hideInitialListAnimation {
+  from {
+    overflow: hidden;
+  }
+  to {
+    overflow: visible;
+  }
+}
+
+@keyframes showList {
+  from {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+  to {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+  }
+}
+
+@keyframes hideList {
+  from {
+    opacity: 1;
+    display: block;
+    visibility: visible;
+  }
+  to {
+    opacity: 0;
+    display: none;
+    visibility: hidden;
+  }
+}
+.wdpMenu__navList > li{
+  overflow: hidden;
+  animation: hideInitialListAnimation 0.23s ease-in 0.23s forwards!important;
+}
+.wdpMenu__navList li > ul{
+  animation: hideList ease-in 0.23s forwards!important;
+}
+.wdpMenu__navList li:hover > ul{
+  animation: showList ease-in 0.23s forwards!important;
+}
+
+
+.wdpMenu__navList li:hover,
+.wdpMenu__navList li.active{
+  background: yellow;
+}
+.wdpMenu__navList > li > ul{
+  position: absolute;
+  top: 100%;
+  left: 0;
+  opacity: 1;
+}
+.wdpMenu__navList > li:hover > ul,
+.wdpMenu__navList > li.active > ul{
+  display: block;
+}
+.wdpMenu__brand{
+
+}
+.wdpMenu__bars{
+  border:1px solid #cecece;
+  width: 40px;
+  height: 40px;
+  position: absolute;
+  right: 10px;
+  display: none;
+  top: 4px;
+}
+.wdpMenu__bars span{
+  position: absolute;
+  width: 80%;
+  height: 2px;
+  background: #000;
+  left: 10%;
+  top: 6px;
+  transition: 0.23s;
+}
+.wdpMenu__bars span:nth-child(2){
+  top: 18px;
+}
+.wdpMenu__bars span:nth-child(3){
+  top: 30px;
+}
+.wdpMenu.active .wdpMenu__bars span:nth-child(2){
+  opacity: 0;
+}
+.wdpMenu.active .wdpMenu__bars span:nth-child(1){
+  transform: rotate(-45deg);
+  top: calc(50% - 2px);
+}
+.wdpMenu.active .wdpMenu__bars span:nth-child(3){
+  transform: rotate(45deg);
+  top: calc(50% - 2px);
+}
+
+.wdpMenu__navList{
+
+}
+
+.wdpMenu__bars{
+
+}
+.wdpMenu__mobileIndicator{
+  width: 20px;
+  height: 20px;
+  background: transparent;
+  position: absolute;
+  right: 10px;
+  top: 5px;
+  z-index: 1;
+  pointer-events: none;
+  transform: rotate(-90deg);
+}
+.wdpMenu__navList .wdpMenu__hasList a{
+  padding-right: 30px;
+}
+.wdpMenu__navList .wdpMenu__hasList a{
+  margin-right: 0;
+}
+.wdpMenu__navList > .wdpMenu__hasList > .wdpMenu__mobileIndicator{
+  transform: rotate(0deg);
+}
+.wdpMenu__mobileIndicator::after{
+  content: '';
+  display: block;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate3d(-50%,-50%,0);
+  border-top:5px solid #999;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+}
+
+@media (max-width:768px) {
+  .wdpMenu{
+    min-height: 50px;
+  }
+
+  .wdpMenu__brand{
+    margin-right: 20px;
+    margin-left: 20px;
+    margin-bottom: 15px;
+    display: block;
+    padding-top: 10px;
+  }
+
+  .wdpMenu__bars{
+    display: block;
+  }
+  .wdpMenu__navList{
+    max-height: 0px;
+    overflow: hidden;
+    opacity: 0;
+    visibility: hidden;
+    transition: 0.5s;
+  }
+  .wdpMenu.active .wdpMenu__navList{
+    max-height: 1000vh;
+    overflow: visible;
+    visibility: visible;
+    opacity: 1;
+  }
+  .wdpMenu__mobileIndicator{
+    width: 50px;
+    height: 50px;
+    background: #888;
+    border:2px solid #444;
+    position: absolute;
+    right: 0;
+    top: 0!important;
+    z-index: 1;
+    pointer-events: auto;
+  }
+  .wdpMenu__mobileIndicator::after{
+    content: '';
+    display: block;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate3d(-50%,-50%,0);
+    border-top:10px solid #ffffff;
+    border-left: 10px solid transparent;
+    border-right: 10px solid transparent;
+  }
+  .wdpMenu{
+    display: block;
+  }
+  .wdpMenu__hasList > a{
+    margin-right:30px;
+  }
+  .wdpMenu__navList{
+    display: block;
+    width: 100%;
+  }
+  .wdpMenu__navList > li{
+    animation: none;
+    overflow: visible;
+  }
+  .wdpMenu__navList li:hover > ul{
+    animation: none;
+    overflow: visible;
+  }
+  .wdpMenu__navList ul{
+    position: relative!important;
+    left: 0;
+    top: 0;
+    width: 100%;
+  }
+  .wdpMenu__navList li:hover > ul,
+  .wdpMenu__navList > li:hover > ul{
+    animation: none;
+    display: none;
+  }
+  .wdpMenu__navList li.active > ul,
+  .wdpMenu__navList > li.active > ul{
+    display: block;
+  }
+  .wdpMenu__navList li:hover,
+  .wdpMenu__navList li.active{
+    background: none;
+  }
+  .wdpMenu__navList li a{
+    padding: 15px 20px;
+    height: auto;
+  }
+}
