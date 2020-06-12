@@ -2,12 +2,19 @@
 /* Created by webdevpuneet.com */
 
 /* wdpMenu */
+.wdpMenu *{
+  box-sizing: border-box;
+}
 .wdpMenu{
   display: flex;
   width: 100%;
   min-width: 100%;
   background: #eaeaea;
   position: relative;
+}
+.wdpMenu input[type="checkbox"],
+.wdpMenu input[type="radio"]{
+  display: none;
 }
 .wdpMenu__brand{
   margin-right: 100px;
@@ -221,7 +228,7 @@
     visibility: hidden;
     transition: 0.5s;
   }
-  .wdpMenu.active .wdpMenu__navList{
+  .wdpMenu__checkbox:checked + .wdpMenu__navList{
     max-height: 1000vh;
     overflow: visible;
     visibility: visible;
